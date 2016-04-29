@@ -29,7 +29,11 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    erb(:play)
+    if @game.active_player.name == "Computer"
+      redirect '/attack'
+    else
+      erb(:play)
+    end
   end
 
   get '/attack' do
