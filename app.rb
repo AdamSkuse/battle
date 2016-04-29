@@ -13,6 +13,14 @@ class Battle < Sinatra::Base
     erb(:index)
   end
 
+  post '/sign-in' do
+    if params[:number_of_players] == "one_player"
+      erb(:one_player)
+    else
+      erb(:two_players)
+    end
+  end
+
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
